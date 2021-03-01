@@ -84,6 +84,11 @@ int measure(){
   return Reading;
 }
 
+void tare(){
+  scale.tare();
+  voice.say(sp3_ZERO);
+}
+
 // ========= sayNumber function ========= 
 // Say any number between -999,999 and 999,999 
 void sayNumber(int n) {
@@ -318,12 +323,14 @@ void setup() {
   // lcd settings
   display.setBrightness(0x0f); // Sets the defaults LCD brightness
 
+  //voice.say(sp2_CALIBRATE);
   // reset the device. perform measurements and tare everything
   //tare();
   scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
   scale.set_scale(42600);                      // this value is obtained by calibrating the scale with known weights; see the README for details
-  scale.tare();               // reset the scale to 0
-
+  tare();               // reset the scale to 0
+  delay(100);
+  voice.say(sp2_READY);
 }
 
 void loop() {
@@ -334,7 +341,7 @@ void loop() {
   // ========= tare ========= 
   int tareState = digitalRead(tarePin);
   if (tareState == HIGH) {
-    scale.tare();
+    tare();
   }
 
   // ========= readout ========= 
