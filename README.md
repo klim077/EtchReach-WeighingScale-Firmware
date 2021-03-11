@@ -10,3 +10,6 @@ Firmware for talking weighing scale
 6. Open device manager on your computer to identify which port your microcontroller has been assigned to (e.g. COM3)
 7. In VSCode, open `platformio.ini` and change your `board` and `upload_port` to the correct one
 8. In VSCode, near the bottom, select &#10004; for building or :arrow_right: for uploading
+
+## Schematic
+![Schematic](https://github.com/klim077/EtchReach-WeighingScale-Firmware/blob/main/assets/WeighingScaleSchematic1.png)
